@@ -1,26 +1,27 @@
+import { Box, createTheme, ScopedCssBaseline, ThemeProvider } from '@mui/material';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Chart, ThemeHandler } from './components';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [darkMode, setDarkMode] = React.useState<boolean>(false);
+	const theme = createTheme(
+		{
+			palette: {
+				mode: darkMode ? "dark" : "light"
+			}
+		}
+	);
+
+	return (
+		<ThemeProvider theme={theme}>
+			<ScopedCssBaseline>
+				<Box height="100vh">
+					<ThemeHandler darkMode={darkMode} setDarkMode={setDarkMode} />
+					<Chart />
+				</Box>
+			</ScopedCssBaseline>
+		</ThemeProvider>
+	);
 }
 
 export default App;
