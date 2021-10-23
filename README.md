@@ -19,6 +19,7 @@ or
 
 `$ npm run build && serve -s build` to run the production build.
 
+## Issues
 If you encounter any issues such as being unable to fetch all the data, do the following:
 
 Go to https://cors-anywhere.herokuapp.com/ and *Request temporary access*. This is due to using a proxy to avoid CORS problems.
