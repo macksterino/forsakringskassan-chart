@@ -1,25 +1,26 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
-import { API, APIOptions, ChartInfo } from '../api';
+import { API, ChartInfo } from '../api';
 
-export const Chart: React.FC<APIOptions> = ({ limit }) => {
+export const Chart: React.FC<any> = () => {
 	const [chartData, setChartData] = React.useState<Array<ChartInfo>>([]);
 
 	React.useEffect(() => {
-		async function loadAPI() {
-			const api = new API({ limit: limit });
+		async function loadAPI(): Promise<void> {
+			const api = new API();
 			setChartData(await api.fetch());
 		}
 
 		loadAPI();
-	}, [limit]);
+	}, []);
 
 	let previousCountry: string = "";
-	const countries = chartData.map(data => {
+	const countries = chartData.map((data, index) => {
 		if (data.countryCode !== previousCountry) {
 			previousCountry = data.countryCode;
+
 			return (
-				<Typography key={data.countryCode + data.gender} component="h5" variant="h5" margin="0 45px">
+				<Typography key={index} component="h5" variant="h5" margin="0 45px">
 					{data.countryCode}
 				</Typography>
 			);
@@ -28,13 +29,15 @@ export const Chart: React.FC<APIOptions> = ({ limit }) => {
 		return null;
 	});
 
-	const valuesArr: Array<number> = [];
+
+	// Make an array with values ranging from 10 to 300
+	const valuesColumn: Array<number> = [];
 	let currentValue: number = 0;
 	for (let i = 0; i < 30; i++) {
-		valuesArr.push(currentValue += 10);
+		valuesColumn.push(currentValue += 10);
 	}
 
-	const values = valuesArr.reverse().map((value, index) => {
+	const values = valuesColumn.reverse().map((value, index) => {
 		return (
 			<Typography key={index} component="h5" variant="h5" padding="2px" margin="0 5px">
 				{value}
@@ -43,44 +46,45 @@ export const Chart: React.FC<APIOptions> = ({ limit }) => {
 	});
 
 	const calculateColumnData = (maxValue: number) => {
-		let columnBlocks: number = 0;
+		let columnValue: number = 0;
 		for (let i = 0; i < maxValue; i++) {
-			if (columnBlocks >= maxValue) {
+			if (columnValue >= maxValue) {
 				return i;
 			}
 
-			columnBlocks += 10;
+			columnValue += 10;
 		}
 
-		return 1;
+		return 0;
 	}
 
 	const columns = chartData.map((data, index) => {
-		const colsMale: Array<any> = [];
-		const colsFemale: Array<any> = [];
+		const colsMale: Array<JSX.Element> = [];
+		const colsFemale: Array<JSX.Element> = [];
 
 		const blocks = calculateColumnData(data.value);
 		for (let i = 0; i < blocks; i++) {
 			if (data.gender === "Male") {
 				colsMale.push(
 					(
-						<Box key={data.gender + i} bgcolor="blue" width="30px" height="30px" margin="2px 30px 2px 0px" />
+						<Box key={i} bgcolor="blue" width="30px" height="30px" margin="2px 30px 2px 0px" />
 					)
 				);
 			}
 			else {
 				colsFemale.push(
 					(
-						<Box key={data.gender + i} bgcolor="pink" width="30px" height="30px" margin="2px 0px 2px 30px" />
+						<Box key={i} bgcolor="pink" width="30px" height="30px" margin="2px 0px 2px 30px" />
 					)
 				);
 			}
 		}
 
 		return (
-			<Box key={data.countryCode + index} display="flex" flexDirection="row" margin="2px">
-				<Box key={data.countryCode + data.gender + index} display="flex" flexDirection="column-reverse">
-					{colsMale}{colsFemale}
+			<Box key={index} display="flex" flexDirection="row" margin="2px">
+				<Box key={index} display="flex" flexDirection="column-reverse">
+					{colsMale}
+					{colsFemale}
 				</Box>
 			</Box>
 		);

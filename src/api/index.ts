@@ -1,9 +1,5 @@
 import axios from 'axios';
 
-export type APIOptions = {
-	limit?: number
-}
-
 export type ChartInfo = {
 	countryCode: string,
 	gender: string,
@@ -11,9 +7,9 @@ export type ChartInfo = {
 }
 
 export class API {
-	private readonly results: Array<ChartInfo>
+	private readonly results: Array<ChartInfo>;
 
-	constructor(private readonly options: APIOptions) {
+	constructor() {
 		this.results = [];
 	}
 
@@ -32,7 +28,7 @@ export class API {
 			});
 		});
 
-		return (this.options.limit !== undefined) ? this.results.slice(0, this.options.limit) : this.results;
+		return this.results;
 	}
 
 	private filter(objs: Array<any>): Array<any> {
