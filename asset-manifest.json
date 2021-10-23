@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/forsakringskassan-chart/static/css/main.57ee7af4.chunk.css",
+    "main.css": "/forsakringskassan-chart/static/css/main.ddc375c4.chunk.css",
     "main.js": "/forsakringskassan-chart/static/js/main.e77e88b8.chunk.js",
     "main.js.map": "/forsakringskassan-chart/static/js/main.e77e88b8.chunk.js.map",
     "runtime-main.js": "/forsakringskassan-chart/static/js/runtime-main.3fd740b8.js",
@@ -8,13 +8,13 @@
     "static/js/2.60717ab5.chunk.js": "/forsakringskassan-chart/static/js/2.60717ab5.chunk.js",
     "static/js/2.60717ab5.chunk.js.map": "/forsakringskassan-chart/static/js/2.60717ab5.chunk.js.map",
     "index.html": "/forsakringskassan-chart/index.html",
-    "static/css/main.57ee7af4.chunk.css.map": "/forsakringskassan-chart/static/css/main.57ee7af4.chunk.css.map",
+    "static/css/main.ddc375c4.chunk.css.map": "/forsakringskassan-chart/static/css/main.ddc375c4.chunk.css.map",
     "static/js/2.60717ab5.chunk.js.LICENSE.txt": "/forsakringskassan-chart/static/js/2.60717ab5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3fd740b8.js",
     "static/js/2.60717ab5.chunk.js",
-    "static/css/main.57ee7af4.chunk.css",
+    "static/css/main.ddc375c4.chunk.css",
     "static/js/main.e77e88b8.chunk.js"
   ]
 }

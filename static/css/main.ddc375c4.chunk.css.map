@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,EACC,qBAAsB,CACtB,QAAS,CACT,SAAU,CACV,iBACD","file":"main.ddc375c4.chunk.css","sourcesContent":["* {\n\tbox-sizing: border-box;\n\tmargin: 0;\n\tpadding: 0;\n\toverflow-x: hidden;\n}\n"]}
